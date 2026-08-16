@@ -1,0 +1,178 @@
+---
+import { Image } from "astro:assets";
+
+import splootyImage from "$assets/images/credits/splooty.png";
+import fexlarImage from "$assets/images/credits/fexlar.png";
+import nexImage from "$assets/images/credits/nex.png";
+import magixImage from "$assets/images/credits/magix.png";
+import milkyImage from "$assets/images/credits/milky.png";
+import socoolmanImage from "$assets/images/credits/socoolman.png";
+import historyeraserImage from "$assets/images/credits/historyeraser.png";
+import eggsImage from "$assets/images/credits/eggs.png";
+import wayneImage from "$assets/images/credits/wayne.png";
+import ryancrImage from "$assets/images/credits/ryancr.png";
+import funkoImage from "$assets/images/credits/funko.png";
+import cheezitImage from "$assets/images/credits/cheezit.png";
+import credit9021007Image from "$assets/images/credits/9021007.gif";
+import starcenturionImage from "$assets/images/credits/starcenturion.gif";
+import gabethefirstImage from "$assets/images/credits/gabethefirst.png";
+import toastamiboImage from "$assets/images/credits/toastamibo.png";
+import happyvrImage from "$assets/images/credits/happyvr.png";
+import magolorImage from "$assets/images/credits/magolor.png";
+import tagcomputingImage from "$assets/images/credits/tagcomputing.png";
+import miaImage from "$assets/images/credits/mia.png";
+import andryImage from "$assets/images/credits/andry.png";
+import zombiebImage from "$assets/images/credits/zombieb.png";
+
+const credits = [
+	{
+		name: "splootybean",
+		role: "Project Lead",
+		image: splootyImage,
+	},
+	{
+		name: "fexlar",
+		role: "Server Developer",
+		image: fexlarImage,
+	},
+	{
+		name: "nex",
+		role: "Developer",
+		image: nexImage,
+	},
+	{
+		name: "Magix",
+		role: "Developer",
+		image: magixImage,
+	},
+	{
+		name: "Milky",
+		role: "Developer",
+		image: milkyImage,
+	},
+	{
+		name: "SoCoolMan",
+		role: "Developer",
+		image: socoolmanImage,
+	},
+	{
+		name: "historyeraser",
+		role: "Logo Designer",
+		image: historyeraserImage,
+	},
+		{
+		name: "eggs",
+		role: "Trailer",
+		image: eggsImage,
+	},
+	{
+		name: "Wayne",
+		role: "Artist / Logo Designer",
+		image: wayneImage,
+	},
+	{
+		name: "RyanCR",
+		role: "Artist / Composer",
+		image: ryancrImage,
+	},
+	{
+		name: "Funko",
+		role: "Artist",
+		image: funkoImage,
+	},
+	{
+		name: "Cheezit",
+		role: "Artist",
+		image: cheezitImage,
+	},
+	{
+		name: "9021007",
+		role: "Artist",
+		image: credit9021007Image,
+		animated: true,
+	},
+	{
+		name: "Star Centurion",
+		role: "Artist",
+		image: starcenturionImage,
+		animated: true,
+	},
+	{
+		name: "GabeTheFirst",
+		role: "Artist",
+		image: gabethefirstImage,
+	},
+	{
+		name: "toast amibo",
+		role: "Artist",
+		image: toastamiboImage,
+	},
+	{
+		name: "HappyVr",
+		role: "Leaf Shader",
+		image: happyvrImage,
+	},
+	{
+		name: "Magolor",
+		role: "Test Squad",
+		image: magolorImage,
+	},
+	{
+		name: "TagComputing",
+		role: "Test Squad",
+		image: tagcomputingImage,
+	},
+	{
+		name: "mia",
+		role: "Test Squad",
+		image: miaImage,
+	},
+	{
+		name: "andry6702",
+		role: 'Coined the term "First EA"',
+		image: andryImage,
+	},
+	{
+		name: "ZombieB",
+		role: 'ZombieB',
+		image: zombiebImage,
+	},
+];
+---
+
+<section class="home-section credits-section">
+	<div class="page-header">
+		<h2>Credits</h2>
+	</div>
+	<div class="row">
+		{
+			credits.map((credit) => (
+				<div class="span4">
+					<div class="credit-entry">
+						{credit.animated ? (
+							<img
+								src={credit.image.src}
+								alt={`${credit.name} pfp`}
+								class="credit-avatar"
+								loading="lazy"
+								width="72"
+								height="72"
+							/>
+						) : (
+							<Image
+								src={credit.image}
+								alt={`${credit.name} pfp`}
+								class="credit-avatar"
+								loading="lazy"
+							/>
+						)}
+						<div>
+							<h3>{credit.name}</h3>
+							<p>{credit.role}</p>
+						</div>
+					</div>
+				</div>
+			))
+		}
+	</div>
+</section>

@@ -1,0 +1,109 @@
+---
+import Footer from "$components/Footer.astro";
+---
+
+<!doctype html>
+<html>
+    <head>
+        <title>TenWholeYears</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link href="/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+        <link
+            href="/css/bootstrap-responsive.min.css"
+            rel="stylesheet"
+            media="screen"
+        />
+        <link href="/css/styles.css" rel="stylesheet" />
+        <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    </head>
+    <body>
+        <script src="/js/jquery-4.0.0.min.js" is:inline></script>
+        <slot />
+        <Footer />
+        <div
+            id="downloadSetupModal"
+            class="modal hide fade"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="downloadSetupModalTitle"
+            aria-hidden="true"
+        >
+            <div class="modal-header">
+                <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-hidden="true"
+                >
+                    &times;
+                </button>
+                <h4 id="downloadSetupModalTitle">First-time setup required</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Before running TenWholeYears on Windows or Linux, install <b>Codename Gordon</b> through Steam first.
+                </p>
+                <p>
+                    Open <a href="steam://install/92">steam://install/92</a>,
+                    accept the Steam prompt, and let it finish installing before
+                    launching TenWholeYears.
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" data-dismiss="modal" aria-hidden="true">
+                    Hold on
+                </button>
+                <a href="#" class="btn btn-primary" data-setup-confirm>
+                    Okay, let me download!
+                </a>
+            </div>
+        </div>
+        <script src="/js/bootstrap.min.js" is:inline></script>
+        <script is:inline>
+            $(() => {
+                const storageKey = "tenwholeyears.setupAcknowledged.v1";
+                const gatedPlatforms = ["windows", "linux"];
+                const $modal = $("#downloadSetupModal");
+                const $confirmButton = $modal.find("[data-setup-confirm]");
+                let pendingDownloadHref = "";
+
+                const hasAcknowledgedSetup = () => {
+                    try {
+                        return localStorage.getItem(storageKey) === "true";
+                    } catch {
+                        return false;
+                    }
+                };
+
+                const acknowledgeSetup = () => {
+                    try {
+                        localStorage.setItem(storageKey, "true");
+                    } catch {
+                        return;
+                    }
+                };
+
+                $(document).on("click", "[data-download-platform]", (event) => {
+                    const link = event.currentTarget;
+                    const platform = $(link).attr("data-download-platform");
+
+                    if ($.inArray(platform, gatedPlatforms) === -1) return;
+                    if (hasAcknowledgedSetup()) return;
+
+                    event.preventDefault();
+                    pendingDownloadHref = link.href;
+                    $confirmButton.attr("href", pendingDownloadHref);
+                    $modal.modal("show");
+                });
+
+                $confirmButton.on("click", (event) => {
+                    if (!pendingDownloadHref) return;
+
+                    event.preventDefault();
+                    acknowledgeSetup();
+                    window.location.href = pendingDownloadHref;
+                });
+            });
+        </script>
+    </body>
+</html>

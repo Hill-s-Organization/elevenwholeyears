@@ -1,0 +1,53 @@
+---
+import boomboxVideo from "$assets/images/videos/boombox.gif";
+import hideVideo from "$assets/images/videos/hide.gif";
+import trickshotVideo from "$assets/images/videos/trickshot.gif";
+import waveVideo from "$assets/images/videos/wave.gif";
+
+const handheldVideos = [
+    {
+        image: boomboxVideo,
+        alt: "splootybean grooving to the boombox",
+        credit: "@fexlar",
+    },
+    {
+        image: hideVideo,
+        alt: "guy hiding",
+        credit: "@splootybean",
+    },
+    {
+        image: trickshotVideo,
+        alt: "dodgeball trickshot",
+        credit: "@_.golden_.",
+    },
+    {
+        image: waveVideo,
+        alt: "hello there!",
+        credit: "@splootybean",
+    },
+];
+---
+
+<section class="home-section gallery-section">
+    <div class="page-header">
+        <h2>Community Handheld Videos</h2>
+    </div>
+    <ul class="thumbnails">
+        {
+            handheldVideos.map((video) => (
+                <li class="span3">
+                    <a href={video.image.src} class="thumbnail">
+                        <img
+                            src={video.image.src}
+                            alt={video.alt}
+                            loading="lazy"
+                        />
+                    </a>
+                    <p class="caption">
+                        Filmed by <b>{video.credit}</b>
+                    </p>
+                </li>
+            ))
+        }
+    </ul>
+</section>

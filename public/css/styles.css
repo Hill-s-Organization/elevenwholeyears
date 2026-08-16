@@ -1,0 +1,377 @@
+/* ==========================================================================
+   Jumbotron
+   ========================================================================== */
+
+.jumbotron {
+    position: relative;
+    padding: 40px 0;
+    color: #fff;
+    text-align: center;
+    text-shadow:
+        0 1px 3px rgba(0, 0, 0, .4),
+        0 0 30px rgba(0, 0, 0, .075);
+    background: #000;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#020031', endColorstr='#6d3353', GradientType=1);
+    -webkit-box-shadow:
+        inset 0 3px 7px rgba(0, 0, 0, .2),
+        inset 0 -3px 7px rgba(0, 0, 0, .2);
+    -moz-box-shadow:
+        inset 0 3px 7px rgba(0, 0, 0, .2),
+        inset 0 -3px 7px rgba(0, 0, 0, .2);
+    box-shadow:
+        inset 0 3px 7px rgba(0, 0, 0, .2),
+        inset 0 -3px 7px rgba(0, 0, 0, .2);
+}
+
+.jumbotron .container {
+    position: relative;
+    z-index: 2;
+}
+
+.jumbotron:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-image: url(/img/backgrounds/hero-banner.gif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    opacity: .6;
+}
+
+.jumbotron h1 {
+    font-size: 80px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+}
+
+.jumbotron p {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 1.25;
+    margin-bottom: 30px;
+}
+
+.jumbotron a {
+    color: #fff;
+    color: rgba(255, 255, 255, .5);
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.jumbotron a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, .25);
+}
+
+/* ==========================================================================
+   Masthead
+   ========================================================================== */
+
+.masthead {
+    padding: 70px 0 80px;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.masthead h1 {
+    font-size: 120px;
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.masthead p {
+    font-weight: 200;
+    line-height: 1.25;
+}
+
+.masthead .btn {
+    padding: 19px 24px;
+    font-size: 24px;
+    font-weight: 200;
+    color: #fff;
+    border: 0;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .1),
+        0 1px 5px rgba(0, 0, 0, .25);
+    -moz-box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .1),
+        0 1px 5px rgba(0, 0, 0, .25);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .1),
+        0 1px 5px rgba(0, 0, 0, .25);
+    -webkit-transition: none;
+    -moz-transition: none;
+    transition: none;
+}
+
+.masthead .btn:hover {
+    -webkit-box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .1),
+        0 1px 5px rgba(0, 0, 0, .25);
+    -moz-box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .1),
+        0 1px 5px rgba(0, 0, 0, .25);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, .1),
+        0 1px 5px rgba(0, 0, 0, .25);
+}
+
+.masthead .btn:active {
+    -webkit-box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, .1),
+        0 1px 0 rgba(255, 255, 255, .1);
+    -moz-box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, .1),
+        0 1px 0 rgba(255, 255, 255, .1);
+    box-shadow:
+        inset 0 2px 4px rgba(0, 0, 0, .1),
+        0 1px 0 rgba(255, 255, 255, .1);
+}
+
+.masthead-logo {
+    display: block;
+    width: 430px;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 12px;
+}
+
+.masthead-title {
+    margin: 0 0 18px;
+    font-size: 42px;
+    line-height: 1;
+    letter-spacing: -1px;
+}
+
+.masthead-download {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.masthead-download .btn {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.masthead-download .subtext {
+    display: block;
+}
+
+.masthead-download .subtext span {
+    margin-right: 4px;
+    color: rgba(255, 255, 255, .5);
+}
+
+.masthead-platforms {
+    display: inline;
+    color: #fff !important;
+}
+
+/* ==========================================================================
+   Home Page
+   ========================================================================== */
+
+.home-section {
+    padding: 30px 0;
+}
+
+.intro-section {
+    padding-top: 40px;
+}
+
+.feature-video {
+    position: relative;
+    margin-top: 10px;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+}
+
+.feature-video iframe {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(100% - 8px);
+    height: calc(100% - 8px);
+    border: 0;
+}
+
+.archive-feature {
+    margin-bottom: 20px;
+}
+
+.archive-feature h3 {
+    margin-top: 12px;
+}
+
+.archive-feature .thumbnail {
+    display: block;
+    max-height: 200px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.gallery-section .thumbnail img {
+    max-height: 150px;
+}
+
+.gallery-section .caption {
+    margin-top: 8px;
+    color: #777;
+    text-align: center;
+}
+
+.credit-entry {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.credit-avatar {
+    width: 72px;
+    height: 72px;
+    margin-right: 16px;
+    object-fit: cover;
+}
+
+.credit-entry h3 {
+    margin-top: 0;
+    margin-bottom: 4px;
+}
+
+.credit-entry p {
+    margin-bottom: 0;
+    color: #777;
+}
+
+.closing-section {
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.closing-section p {
+    max-width: 720px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* ==========================================================================
+   Downloads Page
+   ========================================================================== */
+
+.download-card h3 {
+    margin-bottom: 0;
+}
+
+.download-patch-notes {
+    padding: 20px 0 40px;
+}
+
+.patch-note h3 {
+    margin-top: 0;
+}
+
+/* ==========================================================================
+   Footer
+   ========================================================================== */
+
+footer {
+    margin-bottom: 20px;
+}
+
+footer .links {
+    margin-bottom: 5px;
+}
+
+footer .links * {
+    margin-right: 3px;
+}
+
+footer .about * {
+    display: block;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+
+@media (min-width: 768px) and (max-width: 979px) {
+    .jumbotron {
+        margin-top: -20px;
+    }
+
+    .jumbotron .container {
+        width: initial !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .jumbotron {
+        padding: 40px 20px;
+        margin-top: -20px;
+        margin-right: -20px;
+        margin-left: -20px;
+    }
+
+    .masthead h1 {
+        font-size: 90px;
+    }
+
+    .masthead-logo {
+        width: 360px;
+    }
+
+    .masthead-title {
+        font-size: 36px;
+        word-break: break-all;
+    }
+
+    .masthead p,
+    .masthead .btn {
+        font-size: 24px;
+    }
+
+    .archive-feature .thumbnail,
+    .gallery-section .thumbnail img {
+        max-height: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .jumbotron h1 {
+        font-size: 45px;
+    }
+
+    .jumbotron p,
+    .jumbotron .btn {
+        font-size: 18px;
+    }
+
+    .jumbotron .btn {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .masthead-logo {
+        width: 260px;
+    }
+
+    .masthead-title {
+        font-size: 28px;
+    }
+
+    .archive-feature .thumbnail,
+    .gallery-section .thumbnail img {
+        max-height: none;
+    }
+}

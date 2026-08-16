@@ -1,0 +1,82 @@
+---
+import { getLatestDownloads } from "$lib/downloads";
+
+const downloads = await getLatestDownloads();
+
+const defaultDownload = downloads[0];
+---
+
+<div class="masthead-download" data-downloads={JSON.stringify(downloads)}>
+	{
+		defaultDownload ? (
+			<a
+				href={defaultDownload.href}
+				class="btn btn-primary btn-large"
+				data-download-button
+				data-download-platform={defaultDownload.platform}
+				aria-label={`Download TenWholeYears for ${defaultDownload.label}`}
+			>
+				Download for {defaultDownload.label} ({defaultDownload.version})
+			</a>
+		) : (
+			<a href="/downloads/" class="btn btn-primary btn-large">
+				View Downloads
+			</a>
+		)
+	}
+	<div class="subtext">
+		<span>or</span>
+		<a href="/downloads/" class="masthead-platforms">Other Platforms</a>
+	</div>
+</div>
+
+<script is:inline>
+	$(() => {
+		const $downloadRoot = $("[data-downloads]");
+		if (!$downloadRoot.length) return;
+
+		const $downloadButton = $downloadRoot.find("[data-download-button]");
+		if (!$downloadButton.length) return;
+
+		let downloads = [];
+		try {
+			downloads = JSON.parse(
+				$downloadRoot.attr("data-downloads") || "[]",
+			);
+		} catch {
+			return;
+		}
+
+		const findDownload = (platform) =>
+			$.grep(downloads, (download) => download.platform === platform)[0];
+
+		const getDetectedPlatform = () => {
+			const userAgentDataPlatform =
+				navigator.userAgentData?.platform?.toLowerCase() || "";
+			const userAgent = navigator.userAgent.toLowerCase();
+			const platform = navigator.platform.toLowerCase();
+			const browserPlatform = `${userAgentDataPlatform} ${userAgent} ${platform}`;
+
+			if (
+				browserPlatform.includes("android") ||
+				browserPlatform.includes("oculus") ||
+				browserPlatform.includes("quest")
+			) {
+				return "meta";
+			}
+			if (browserPlatform.includes("linux")) return "linux";
+			if (browserPlatform.includes("win")) return "windows";
+
+			return "windows";
+		};
+
+		const download = findDownload(getDetectedPlatform()) || downloads[0];
+		if (!download) return;
+
+		$downloadButton
+			.attr("href", download.href)
+			.attr("data-download-platform", download.platform)
+			.attr("aria-label", `Download TenWholeYears for ${download.label}`)
+			.text(`Download for ${download.label} (${download.version})`);
+	});
+</script>

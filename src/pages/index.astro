@@ -1,0 +1,125 @@
+---
+import { Image } from "astro:assets";
+
+import Layout from "$layouts/Layout.astro";
+
+import DownloadButton from "$components/Home/DownloadButton.astro";
+import HandheldVideos from "$components/Home/HandheldVideos.astro";
+import CreditsSection from "$components/Home/CreditsSection.astro";
+
+import logoImage from "$assets/images/brand/logo-tenwholeyears.png";
+
+import cardHorseshoesImage from "$assets/images/home/card-horseshoes.png";
+import cardPlatformsImage from "$assets/images/home/card-platforms.png";
+import cardRecroomImage from "$assets/images/home/card-recroom.png";
+---
+
+<Layout>
+	<div class="jumbotron masthead">
+		<div class="container">
+			<Image
+				src={logoImage}
+				alt="TenWholeYears Logo"
+				class="masthead-logo"
+			/>
+			<h1 class="masthead-title">TenWholeYears</h1>
+			<p>A love letter to Rec Room on its true 10th anniversary</p>
+			<DownloadButton />
+		</div>
+	</div>
+	<div class="container">
+		<section class="home-section intro-section">
+			<div class="row">
+				<div class="span6">
+					<h2>What is TenWholeYears?</h2>
+					<p class="lead">
+						TenWholeYears is a love letter to Rec Room and the
+						community that made it special. Created to celebrate Rec
+						Room's true tenth anniversary, we invite everyone to
+						visit the first release of Rec Room, explore activities
+						that never made it into the game, and reflect on how far
+						Rec Room and it's community has progressed over the last
+						ten years.
+					</p>
+					<p class="lead">
+						Read about the inspiration behind TenWholeYears <a
+							href="https://blog.recroomarchive.org/ten-whole-years/"
+							>here</a
+						>.
+					</p>
+				</div>
+				<div class="span6">
+					<div class="thumbnail feature-video">
+						<iframe
+							src="https://www.youtube.com/embed/jEDSRaMcwVQ"
+							title="TenWholeYears feature video"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+							allowfullscreen
+						></iframe>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="home-section">
+			<div class="page-header">
+				<h2>Explore the Game</h2>
+			</div>
+			<div class="row">
+				<div class="span4">
+					<div class="archive-feature">
+						<Image
+							src={cardRecroomImage}
+							alt="Placeholder screenshots and media image"
+							class="thumbnail"
+						/>
+						<h3>Check Out Where It All Began</h3>
+						<p>
+							Return to the first release of Rec Room and see
+							where it all began! TenWholeYears is a chance to
+							revisit the game's earliest days and reflect on how
+							much Rec Room and its community have grown over the
+							last decade.
+						</p>
+					</div>
+				</div>
+				<div class="span4">
+					<div class="archive-feature">
+						<Image
+							src={cardHorseshoesImage}
+							alt="Scrapped Horseshoes Activity"
+							class="thumbnail"
+						/>
+						<h3>Scrapped Activities</h3>
+						<p>
+							Explore prototype activities and unfinished ideas
+							that never made it into Rec Room. These activities
+							have been restored to show a glimpse into what could
+							of existed.
+						</p>
+					</div>
+				</div>
+				<div class="span4">
+					<div class="archive-feature">
+						<Image
+							src={cardPlatformsImage}
+							alt="Beta LockerRoom (RecRoom)"
+							class="thumbnail"
+						/>
+						<h3>Available for Everyone</h3>
+						<p>
+							Because TenWholeYears is built from a decompilation
+							of the original game, we're able to bring the game
+							to platforms that didn't even exist when Rec Room
+							first launched!
+						</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<HandheldVideos />
+
+		<CreditsSection />
+	</div>
+</Layout>

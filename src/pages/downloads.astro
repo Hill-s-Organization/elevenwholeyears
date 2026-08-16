@@ -1,0 +1,92 @@
+---
+import { Image } from "astro:assets";
+
+import { api } from "$lib/api";
+import { getLatestDownloads } from "$lib/downloads";
+
+import Layout from "$layouts/Layout.astro";
+
+const downloads = await getLatestDownloads();
+
+const patchNotes = await api.builds.v1.getPatchNotes();
+---
+
+<Layout>
+	<div class="container">
+		<div class="page-header">
+			<p><a href="/">&larr; Back to home</a></p>
+			<h1>Downloads</h1>
+		</div>
+		<p class="lead">Choose the build for your platform.</p>
+
+		<div class="alert alert-info">
+			<strong>First-time setup:</strong> Before running TenWholeYears on Windows
+			or Linux, install <b>Codename Gordon</b> through Steam by opening <a
+				href="steam://install/92">steam://install/92</a
+			> in your browser. Accept the Steam prompt and let it finish installing
+			first.
+		</div>
+
+		{
+			downloads.length > 0 ? (
+				<div class="row">
+					{downloads.map((download) => (
+						<div class="span4">
+							<div class="well text-center download-card">
+								<p>
+									<Image
+										src={download.icon}
+										alt=""
+										width="72"
+										height="72"
+									/>
+								</p>
+								<h3>{download.label}</h3>
+								<p>{download.version}</p>
+								<p>
+									<a
+										href={download.href}
+										class="btn btn-primary"
+										data-download-platform={download.platform}
+										aria-label={`Download for ${download.label}`}
+									>
+										Download
+									</a>
+								</p>
+							</div>
+						</div>
+					))}
+				</div>
+			) : (
+				<div class="alert alert-warning">
+					Downloads are unavailable right now.
+				</div>
+			)
+		}
+
+		<section class="download-patch-notes">
+			<div class="page-header">
+				<h2>Patch Notes</h2>
+			</div>
+			{
+				patchNotes.length > 0 ? (
+					patchNotes.map((patchNote) => (
+						<div class="well patch-note">
+							<h3>{patchNote.version}</h3>
+							<p class="muted">{patchNote.date}</p>
+							<ul>
+								{patchNote.changes.map((change) => (
+									<li>{change}</li>
+								))}
+							</ul>
+						</div>
+					))
+				) : (
+					<div class="well patch-note">
+						<p>No patch notes yet.</p>
+					</div>
+				)
+			}
+		</section>
+	</div>
+</Layout>
