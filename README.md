@@ -11,6 +11,7 @@ npm install
 ```
 
 Create a local `.dev.vars` file:
+CDN goes to recroom.baby, be cautious!
 
 ```env
 TWY_API_URL=https://api.recroom.baby
